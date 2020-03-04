@@ -20,12 +20,24 @@ public class Controller {
         initView();
     }
 
-    public void initView() {
+    private void initView() {
         if (!students.isEmpty()) {
             view.getStudentTextArea().setText(students.get(currentIndex).toString());
             currentIndex++;
         }
+        // V1 - using lambda expressions
         view.getNextButton().addActionListener(e -> showNextStudent());
+
+        // V2 - using anonymous class
+        // ActionListener is an interface and here we are actually defining
+        // a class that implements that interface
+        view.getNextButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Student s = getNextStudent();
+                view.getStudentTextArea().setText(s.toString());
+            }
+        });
     }
 
     private void showNextStudent() {
@@ -41,4 +53,5 @@ public class Controller {
         currentIndex++;
         return s;
     }
+
 }

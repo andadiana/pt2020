@@ -16,14 +16,24 @@ public class CalculatorTest {
 
     @Test
     public void additionWithZero_success() {
+        // First, do the test setup
         int num = 5;
+
+        // Run the method under test
         int result = calculator.add(num, 0);
+
+        // Verify result against expected value
         assertEquals(result, num);
     }
 
     @Test
     public void multiplication_succes() {
-        int result = calculator.multiply(10, 5);
-        assertEquals(50, result);
+        int x = 10;
+        int y = 5;
+        int expectedResult = 50;
+
+        int result = calculator.multiply(x, y);
+
+        assertEquals(expectedResult, result);
     }
 }
